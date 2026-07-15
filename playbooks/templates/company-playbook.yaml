@@ -1,0 +1,55 @@
+id: company.EXAMPLE
+version: 0.1.0
+status: draft
+company:
+  ticker: EXAMPLE
+  name: Example Company
+  industry_playbooks: []
+  reporting_currency: USD
+
+business_dna:
+  model: unknown
+  cycle: unknown
+  capital_intensity: unknown
+  moat: []
+  revenue_drivers: []
+  margin_drivers: []
+  cash_flow_drivers: []
+  valuation_drivers: []
+  failure_modes: []
+
+research_priorities:
+  - id: example_signal
+    weight: 0.50
+    why_it_matters: Explain the causal link to earnings or valuation.
+    questions: []
+    evidence:
+      preferred: []
+      acceptable: []
+    decompositions: []
+    invalidation: []
+    common_traps: []
+
+key_metrics: []
+management_language_watch: {}
+customer_map: []
+supplier_map: []
+competitor_map: []
+
+prediction_rules:
+  required_checkpoints:
+    - immediate_event
+    - next_earnings
+    - 180_day
+  require_counter_evidence: true
+  require_eps_or_valuation_mapping: true
+
+learning:
+  minimum_validated_predictions_for_weight_change: 8
+  maximum_weight_change_per_proposal: 0.15
+  requires_human_approval: true
+
+changelog:
+  - version: 0.1.0
+    date: YYYY-MM-DD
+    reason: Initial playbook.
