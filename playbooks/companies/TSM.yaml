@@ -1,0 +1,141 @@
+id: company.TSM
+version: 0.1.0
+status: draft
+company:
+  ticker: TSM
+  local_ticker: "2330"
+  name: Taiwan Semiconductor Manufacturing Company
+  industry_playbooks:
+    - industry.semiconductor_foundry
+  reporting_currency: TWD
+  guidance_currency: USD
+
+business_dna:
+  model: pure_play_foundry
+  cycle: structural_growth_with_semiconductor_cycles
+  capital_intensity: very_high
+  moat:
+    - process_technology
+    - yield_and_manufacturing_execution
+    - customer_trust
+    - scale
+    - advanced_packaging
+  valuation_drivers:
+    - forward_eps_growth
+    - ai_demand_visibility
+    - pricing_power
+    - gross_margin_quality
+    - capital_efficiency
+    - geopolitical_discount
+
+research_priorities:
+  - id: ai_demand_visibility
+    weight: 1.00
+    questions:
+      - Is AI accelerator demand still exceeding supply?
+      - Has management extended or shortened visibility?
+      - Are customers changing order timing or inventory behavior?
+    evidence:
+      preferred:
+        - official_guidance
+        - earnings_qa
+        - customer_capex_and_guidance
+        - capacity_and_lead_time
+    invalidation:
+      - customer_inventory_digestion
+      - shortened_demand_visibility
+      - broad_order_pushouts
+
+  - id: gross_margin_quality
+    weight: 1.00
+    decompositions:
+      - pricing
+      - node_mix
+      - n2_ramp_dilution
+      - utilization
+      - overseas_fab_dilution
+      - foreign_exchange
+      - electricity_and_material_cost
+    rule: A margin decline caused by a healthy new-node ramp is not equivalent to weakened pricing power.
+
+  - id: capex_quality
+    weight: 0.95
+    decompositions:
+      - advanced_process_equipment
+      - advanced_packaging
+      - buildings_and_cleanrooms
+      - overseas_construction_cost
+      - maintenance
+      - mature_nodes
+      - purchase_timing
+      - inflation
+    rule: Never classify higher CapEx as positive without identifying what effective capacity, technology, or future cash flow it creates.
+
+  - id: advanced_packaging
+    weight: 0.95
+    questions:
+      - Which packaging technologies are constrained?
+      - How fast is capacity expanding?
+      - Is the bottleneck internal, equipment, substrate, testing, power, or customer readiness?
+
+  - id: n2_ramp
+    weight: 0.85
+    questions:
+      - Is volume ramp on schedule?
+      - What is the expected margin dilution and recovery path?
+      - Are yield or customer concentration risks changing?
+
+  - id: pricing_power
+    weight: 0.95
+    evidence:
+      - pricing_comments
+      - asp_and_mix
+      - customer_acceptance
+      - margin_bridge
+
+  - id: overseas_fabs
+    weight: 0.75
+    questions:
+      - What is the margin dilution?
+      - How much is offset by subsidies or pricing?
+      - Is CapEx growth effective capacity or location cost?
+
+  - id: mature_nodes
+    weight: 0.45
+    questions:
+      - Is utilization recovering?
+      - Is competition causing price pressure?
+
+language_watch:
+  demand_positive:
+    - strong
+    - very strong
+    - robust
+    - demand exceeds supply
+  demand_warning:
+    - normalization
+    - inventory digestion
+    - closely monitoring
+    - customer pushout
+  supply:
+    - balanced
+    - tight
+    - very tight
+    - constrained
+  pricing:
+    - constructive
+    - disciplined
+    - pricing pressure
+
+prediction_rules:
+  required_checkpoints:
+    - immediate_event
+    - next_earnings
+    - 180_day
+  require_counter_evidence: true
+  require_eps_or_valuation_mapping: true
+
+learning:
+  minimum_validated_predictions_for_weight_change: 8
+  maximum_weight_change_per_proposal: 0.15
+  requires_human_approval: true
