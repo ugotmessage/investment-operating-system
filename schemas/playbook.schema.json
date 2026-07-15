@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://investment-operating-system.local/schemas/playbook.schema.json",
+  "title": "Company or Industry Playbook",
+  "type": "object",
+  "required": ["id", "version", "status", "research_priorities", "learning"],
+  "properties": {
+    "id": {"type": "string"},
+    "version": {"type": "string"},
+    "status": {"enum": ["draft", "active", "deprecated"]},
+    "company": {"type": "object"},
+    "industry": {"type": "object"},
+    "business_dna": {"type": "object"},
+    "research_priorities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "weight"],
+        "properties": {
+          "id": {"type": "string"},
+          "weight": {"type": "number", "minimum": 0, "maximum": 1},
+          "why_it_matters": {"type": "string"},
+          "questions": {"type": "array", "items": {"type": "string"}},
+          "evidence": {"type": "object"},
+          "decompositions": {"type": "array", "items": {"type": "string"}},
+          "invalidation": {"type": "array", "items": {"type": "string"}},
+          "common_traps": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "prediction_rules": {"type": "object"},
+    "learning": {
+      "type": "object",
+      "required": ["minimum_validated_predictions_for_weight_change", "requires_human_approval"],
+      "properties": {
+        "minimum_validated_predictions_for_weight_change": {"type": "integer", "minimum": 1},
+        "maximum_weight_change_per_proposal": {"type": "number", "minimum": 0, "maximum": 1},
+        "requires_human_approval": {"type": "boolean"}
+      }
+    },
+    "changelog": {"type": "array"}
+  }
+}
