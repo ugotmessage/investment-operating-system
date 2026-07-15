@@ -1,0 +1,80 @@
+id: industry.semiconductor_foundry
+version: 0.1.0
+status: draft
+industry:
+  name: Semiconductor Foundry
+  cycle: structural_growth_plus_inventory_cycles
+  capital_intensity: very_high
+
+leading_indicators:
+  - customer_product_launches
+  - hyperscaler_capex
+  - wafer_demand_visibility
+  - lead_times
+  - utilization
+  - equipment_orders
+
+lagging_indicators:
+  - reported_revenue
+  - depreciation
+  - mature_node_pricing
+
+research_priorities:
+  - id: demand_by_node
+    weight: 0.95
+    decompositions:
+      - leading_edge
+      - mature_node
+      - ai_accelerator
+      - smartphone
+      - automotive
+      - iot
+
+  - id: pricing_and_mix
+    weight: 0.95
+    common_traps:
+      - confusing mix improvement with explicit price increases
+      - ignoring foreign_exchange
+
+  - id: utilization_and_yield
+    weight: 0.90
+    questions:
+      - Is utilization improving across all nodes or only leading edge?
+      - Is new-node yield improving on schedule?
+
+  - id: capex_productivity
+    weight: 0.90
+    decompositions:
+      - capacity_growth
+      - technology_migration
+      - building_cost
+      - equipment_cost
+      - geographic_duplication
+      - maintenance
+
+  - id: packaging_bottleneck
+    weight: 0.85
+    questions:
+      - Is wafer capacity or packaging the binding constraint?
+      - Which upstream category limits output?
+
+  - id: geopolitical_and_overseas_cost
+    weight: 0.75
+
+common_failure_modes:
+  - treating all capex as productive capacity
+  - extrapolating one AI customer to the entire demand base
+  - ignoring depreciation and ramp dilution
+  - confusing shipment timing with end-demand growth
+  - mapping supplier benefit without checking bottleneck and local content
+
+valuation_methods:
+  - forward_pe
+  - discounted_cash_flow
+  - through_cycle_margin
+  - roic_and_reinvestment
+
+learning:
+  minimum_validated_predictions_for_weight_change: 12
+  maximum_weight_change_per_proposal: 0.10
+  requires_human_approval: true
